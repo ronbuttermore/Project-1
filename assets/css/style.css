@@ -12,24 +12,34 @@
     --gradient-hover: radial-gradient(rgb(181, 116, 0), rgb(151, 65, 0));
 }
 
+body {
+    background-color: var(--background-color);
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Raleway', sans-serif;
+}
+
 h1 {
     font-size: 60px;
+    font-weight: 300;
 }
 
 h2 {
     font-size: 45px;
+    font-weight: 300;
 }
 
 h3 {
     font-size: 30px;
+    font-weight: 400;
 }
 
 h4 {
     font-size: 20px;
-}
-
-body {
-    background-color: var(--background-color);
+    font-weight: 400;
 }
 
 .navbar {
@@ -40,11 +50,18 @@ body {
 .btn {
     color: var(--text-color-dark);
     background-image: var(--gold-gradient);
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
 }
 
 .btn:hover {
     color: var(--text-color-light);
     background-image: var(--gradient-hover);
+}
+
+input::placeholder {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
 }
 
 /* css for the index html*/
@@ -54,6 +71,10 @@ body {
     border-radius: 5px;
     margin-top: 15%;
     padding: 5%;
+}
+
+.search-btn-main {
+    width: 20%;
 }
 
 
@@ -105,7 +126,8 @@ body {
 
 /* css for the brewery about html*/
 .brewery-name {
-    color: var(--text-color-light)
+    color: var(--text-color-light);
+    margin-top: 2%;
 }
 
 .brewery-logo {
