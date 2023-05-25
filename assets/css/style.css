@@ -1,0 +1,156 @@
+:root {
+    /*colors*/
+    /* --background-color: rgb(67, 16, 1); */
+    --background-color: rgb(63, 44, 39);
+    --background-color-light: rgb(255, 255, 255);
+    --background-color-light-transparent: rgba(255, 255, 255, .75);
+
+    --text-color-dark: rgb(35, 25, 23);
+    --text-color-light: rgb(255, 255, 255);
+
+    --gold-gradient: radial-gradient(rgb(232, 216, 163), rgb(225, 196, 83));
+    --gradient-hover: radial-gradient(rgb(181, 116, 0), rgb(151, 65, 0));
+}
+
+h1 {
+    font-size: 60px;
+}
+
+h2 {
+    font-size: 45px;
+}
+
+h3 {
+    font-size: 30px;
+}
+
+h4 {
+    font-size: 20px;
+}
+
+body {
+    background-color: var(--background-color);
+}
+
+.navbar {
+    background-color: var(--background-color-light);
+    color: var(--text-color-dark);
+}
+
+.btn {
+    color: var(--text-color-dark);
+    background-image: var(--gold-gradient);
+}
+
+.btn:hover {
+    color: var(--text-color-light);
+    background-image: var(--gradient-hover);
+}
+
+/* css for the index html*/
+.main-container {
+    color: var(--text-color-dark);
+    background-color: var(--background-color-light-transparent);
+    border-radius: 5px;
+    margin-top: 15%;
+    padding: 5%;
+}
+
+
+/* css for the search results html*/
+.showing-results-text {
+    color: var(--text-color-light);
+    margin-top: 3%;
+    margin-left: 2%;
+    margin-bottom: 2%;
+}
+
+.search-results-container {
+    overflow-y: auto;
+    max-height: 600px;
+    color: var(--text-color-dark);
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    background-color: var(--background-color-light-transparent);
+    border-radius: 5px;
+}
+
+.search-result {
+    position: relative;
+    outline: solid 2px var(--text-color-dark);
+    border-radius: 5px;
+    margin: 5px;
+    padding: 10px;
+    padding-bottom: 30px;
+}
+
+.brewery-logo-search {
+    float: left;
+    width: 80px;
+}
+
+.direction-btn {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+}
+
+.about-btn {
+    position: absolute;
+    bottom: 5px;
+    right: 140px;
+}
+
+/* css for the brewery about html*/
+.brewery-name {
+    color: var(--text-color-light)
+}
+
+.brewery-logo {
+    background-color: var(--background-color-light-transparent);
+    border-radius: 5px;
+}
+
+.brewery-logo, .about-direction-btn {
+    width: 20%;
+    margin-left: 40%;
+    margin-right: 40%;
+    margin-top: 2%;
+}
+
+.about-container {
+    color: var(--text-color-dark);
+    width: 90%;
+    margin-top: 2%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    background-color: var(--background-color-light-transparent);
+    border-radius: 5px;
+}
+
+
+/* css for the directions html*/
+#sidebar {
+    background-color: var(--background-color-light-transparent);
+    padding-left: 20px;
+    padding-right: 10px;
+}
+
+.directions-list-container{
+    overflow-y: auto;
+    max-height: 450px;
+}
+
+.direction-icon {
+    float: left;
+    width: 25%;
+}
+
+.map-text {
+    color: var(--text-color-light);
+}
+
+
