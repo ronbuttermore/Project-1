@@ -112,4 +112,4 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedZipCodesContainer = document.getElementById('savedZipCodes');
     savedZipCodesContainer.style.display = 'block';
     });
-  
+  });
