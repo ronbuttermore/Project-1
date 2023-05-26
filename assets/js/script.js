@@ -22,3 +22,7 @@ const navBreweryAddress = $('#breweryaddress');
 const navDirectionsSection = $('#directionssection');
 const navDirectionsListContainer = $('#directions-list-container');
 const navMapContainer = $('#maparea');
+
+// coding for main page functionality
+
+// coding for brewery about page
