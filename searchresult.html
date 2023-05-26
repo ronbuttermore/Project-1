@@ -8,6 +8,13 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="./assets/css/style.css">
+    <style>
+      /* Add scrollbar to search results container */
+      .search-results-container {
+        max-height: 500px; /* Set the maximum height of the container */
+        overflow-y: auto; /* Enable vertical scrollbar */
+      }
+    </style>
   </head>
   <body>
 
@@ -18,6 +25,8 @@
         <form class="d-flex" role="search">
           <span class="input-group-text">Search another area</span>
           <input class="form-control" type="search" placeholder="Postal Code, City" aria-label="Postal Code, City">
+          <!-- Empty div for displaying saved cities -->
+          <div id="savedCities"></div>
           <button class="btn search-btn nav-search-btn" type="submit">Search</button>
         </form>
       </div>
@@ -26,105 +35,13 @@
     <h4 class="showing-results-text">Showing results for <span id="searchedArea">...</span></h4>
     <!-- search result container -->
     <div class="row search-results-container" id="searchResults"> 
-      <!-- Search results will be dynamically added here -->
-      <div class="search-result" id="search-result-one">
-        <h4 id="result-one-name" class="result-name">First brewery</h4>
-        <img class="brewery-logo-search" id="nameofbrewery-logo-search" src="" alt="brewery logo"/>
-        <p id="result-one-info" class="result-info">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio, rerum debitis, quod nostrum voluptate doloribus consequuntur id rem perferendis ipsum corrupti. Sunt necessitatibus ex quis consectetur voluptate maiores tempore quasi!</p>
-        <button class="btn about-btn" type="about">About Brewery</button>
-        <button class="btn direction-btn" type="get-directions">Get Directions</button>
-      </div>
-      <div class="search-result" id="search-result-two">
-        <h4 id="result-two-name" class="result-name">Second brewery</h4>
-        <img class="brewery-logo-search" id="nameofbrewery-logo-search" src="" alt="brewery logo"/>
-        <p id="result-two-info" class="result-info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, voluptatem ut repellendus asperiores molestiae laboriosam laudantium nulla incidunt. Ex dicta sapiente et quod cumque quaerat rem soluta iusto aspernatur! Obcaecati.</p>
-        <button class="btn about-btn" type="about">About Brewery</button>
-        <button class="btn direction-btn" type="get-directions">Get Directions</button>
-      </div>
-      <div class="search-result" id="search-result-three">
-        <h4 id="result-three-name" class="result-name">Third brewery</h4>
-        <img class="brewery-logo-search" id="nameofbrewery-logo-search" src="" alt="brewery logo"/>
-        <p id="result-three-info" class="result-info">Lorem ipsum dolor sit amet,  dolore quas unde delectus officia quam animi, suscipit possimus doloribus, consequuntur nobis recusandae porro beatae, nulla illum! Totam, praesentium accusamus.</p>
-        <button class="btn about-btn" type="about">About Brewery</button>
-        <button class="btn direction-btn" type="get-directions">Get Directions</button>
-      </div>
-      <div class="search-result" id="search-result-four">
-        <h4 id="result-four-name" class="result-name">Fourth brewery</h4>
-        <img class="brewery-logo-search" id="nameofbrewery-logo-search" src="" alt="brewery logo"/>
-        <p id="result-four-info" class="result-info">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit omnis, hic aspernatur ea exercitationem explicabo labore officia natus a consequuntur possimus laboriosam sapiente eos quam. Aliquid sunt voluptas odio recusandae?</p>
-        <button class="btn about-btn" type="about">About Brewery</button>
-        <button class="btn direction-btn" type="get-directions">Get Directions</button>
-      </div>
-      <div class="search-result" id="search-result-five">
-        <h4 id="result-five-name" class="result-name">Fifth brewery</h4>
-        <img class="brewery-logo-search" id="nameofbrewery-logo-search" src="" alt="brewery logo"/>
-        <p id="result-five-info" class="result-info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, ullam ipsum odit at minus nesciunt dicta esse sint explicabo hic eligendi molestias dolor pariatur repudiandae architecto aperiam nemo cupiditate sequi?</p>
-        <button class="btn about-btn" type="about">About Brewery</button>
-        <button class="btn direction-btn" type="get-directions">Get Directions</button>      
-      </div>
-      <div class="search-result" id="search-result-six">
-        <h4 id="result-six-name" class="result-name">Sixth brewery</h4>
-        <img class="brewery-logo-search" id="nameofbrewery-logo-search" src="" alt="brewery logo"/>
-        <p id="result-six-info" class="result-info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, ullam ipsum odit at minus nesciunt dicta esse sint explicabo hic eligendi molestias dolor pariatur repudiandae architecto aperiam nemo cupiditate sequi?</p>
-        <button class="btn about-btn" type="about">About Brewery</button>
-        <button class="btn direction-btn" type="get-directions">Get Directions</button>
-      </div>
     </div>
+
 
     <!-- Include Bootstrap JS (jQuery and Popper.js are required dependencies) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="./assets/js/script.js" async defer></script>
+    <script src="./assets/js/searchresult.js" async defer></script>
   </body>
-  <!-- <body>
-
-    <script>
-      // Dummy data for demonstration purposes
-      const searchResults = [
-        {
-          name: "Brewery 1",
-          city: "City 1",
-          state: "State 1",
-          address: "Address 1",
-          about: "About 1",
-        },
-        {
-          name: "Brewery 2",
-          city: "City 2",
-          state: "State 2",
-          address: "Address 2",
-          about: "About 2",
-        },
-        
-      ];
-
-      // Function to generate search result items?
-      function generateSearchResult(result) {
-        const resultItem = document.createElement("div");
-        resultItem.className = "col-md-4 result-item";
-        resultItem.innerHTML = `
-          <h3>${result.name}</h3>
-          <p>City: ${result.city}</p>
-          <p>State: ${result.state}</p>
-          <p>Address: ${result.address}</p>
-          <p>About: ${result.about}</p>
-        `;
-        return resultItem;
-      }
-
-      // Function to display search results?
-      function displaySearchResults(results) {
-        const searchResultsContainer = document.getElementById("searchResults");
-        searchResultsContainer.innerHTML = "";
-        results.forEach((result) => {
-          const resultItem = generateSearchResult(result);
-          searchResultsContainer.appendChild(resultItem);
-        });
-      }
-
-      // Simulate displaying search results?
-      displaySearchResults(searchResults);
-    </script>
-  </body> -->
 </html>
