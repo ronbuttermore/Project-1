@@ -48,7 +48,22 @@ body {
 }
 
 /* css for the index html*/
+#main-page-video-web {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height:100%;
+}
+
+#main-page-video-phone {
+    display: none;
+}
+
 .main-container {
+    position: fixed;
+    top: 5%;
+    min-width: 100%;
     color: var(--text-color-dark);
     background-color: var(--background-color-light-transparent);
     border-radius: 5px;
@@ -154,3 +169,15 @@ body {
 }
 
 
+/* media responsive - phone */
+@media screen and (max-width: 735px) {
+    
+    /* css for the index html*/
+    #main-page-video-phone {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height:100%;
+        }
+}
