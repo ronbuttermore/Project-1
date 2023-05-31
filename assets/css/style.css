@@ -56,10 +56,6 @@ body {
     min-height:100%;
 }
 
-#main-page-video-phone {
-    display: none;
-}
-
 .main-container {
     position: fixed;
     top: 5%;
@@ -119,6 +115,19 @@ body {
 }
 
 /* css for the brewery about html*/
+#brewery-background-image {
+    position: fixed;
+    right: 0;
+    top: 0;
+    min-width: 100%;
+    min-height:100%;
+}
+
+.brewery-container {
+    position:fixed;
+    top: 12%;
+}
+
 .brewery-name {
     color: var(--text-color-light)
 }
@@ -166,18 +175,4 @@ body {
 
 .map-text {
     color: var(--text-color-light);
-}
-
-
-/* media responsive - phone */
-@media screen and (max-width: 735px) {
-    
-    /* css for the index html*/
-    #main-page-video-phone {
-        position: fixed;
-        right: 0;
-        bottom: 0;
-        min-width: 100%;
-        min-height:100%;
-        }
 }
