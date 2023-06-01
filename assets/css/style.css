@@ -199,16 +199,26 @@ h4 {
     width: 25%;
 }
 
-#maparea {
+.map-text {
     position: fixed;
     left: 30%;
     color: var(--text-color-light);
     background-color: var(--background-color-light-transparent);
 }
 
+#map {
+    width: 65%;
+    height: 80%;
+    position: fixed;
+    left: 30%;
+    top: 15%;
+    color: var(--text-color-light);
+    background-color: var(--background-color-light-transparent);
+}
+
 /* media responsive - tablet and smaller computer screens */
 @media screen and (max-width: 1240px) {
-    #maparea {
+    #map {
         left: 34%;
     }
 }
@@ -218,7 +228,7 @@ h4 {
     .search-results-container {
         top: 20%;
     }
-    #maparea {
+    #map {
         display: none;
     }
 }

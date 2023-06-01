@@ -60,3 +60,10 @@ $("#about-directions-btn").click(function(event){
     // pull information from url to put into directions?
     window.location.assign("directions.html"); 
 });
+
+const map = tt.map({
+    key: "9GgFvkDZz2WjiY63GGreVAvcuKo7Ztvl",
+    container: "map",
+    center: [-104.990250,39.739235],
+    zoom: 10
+})

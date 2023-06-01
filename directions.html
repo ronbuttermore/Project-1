@@ -8,7 +8,9 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Raleway:wght@200;300;400&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.18.0/maps/maps.css"/>
         <!-- <link rel="stylesheet" href="./assets/css/directions.css"> -->
+
         <link rel="stylesheet" href="./assets/css/style.css"> 
     </head>
     <body>
@@ -68,8 +70,10 @@
             </div>
         </div>
         <!-- map -->
-        <div id="maparea" class="col-12 col-md-8 col-lg-9">
+        <div class="col-12 col-md-8 col-lg-9">
             <h1 class="map-text">Map</h1>
+            <br/>
+            <div id="map"></div>
         </div>
         </div>
 
@@ -77,6 +81,7 @@
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-        <script src="./assets/js/script.js" async defer></script>
+        <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.18.0/maps/maps-web.min.js"></script>
+        <script src="./assets/js/script.js"></script>
     </body>
 </html>
