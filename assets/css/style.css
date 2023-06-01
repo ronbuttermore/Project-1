@@ -12,24 +12,34 @@
     --gradient-hover: radial-gradient(rgb(181, 116, 0), rgb(151, 65, 0));
 }
 
+body {
+    background-color: var(--background-color);
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Raleway', sans-serif;
+}
+
 h1 {
     font-size: 60px;
+    font-weight: 300;
 }
 
 h2 {
     font-size: 45px;
+    font-weight: 300;
 }
 
 h3 {
     font-size: 30px;
+    font-weight: 400;
 }
 
 h4 {
     font-size: 20px;
-}
-
-body {
-    background-color: var(--background-color);
+    font-weight: 400;
 }
 
 .navbar {
@@ -40,6 +50,8 @@ body {
 .btn {
     color: var(--text-color-dark);
     background-image: var(--gold-gradient);
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
 }
 
 .btn:hover {
@@ -47,8 +59,27 @@ body {
     background-image: var(--gradient-hover);
 }
 
+.background-image {
+    position: fixed;
+    right: 0;
+    top: 0;
+    min-width: 100%;
+    min-height:100%;
+}
+
 /* css for the index html*/
+#main-page-video-web {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height:100%;
+}
+
 .main-container {
+    position: fixed;
+    top: 5%;
+    min-width: 100%;
     color: var(--text-color-dark);
     background-color: var(--background-color-light-transparent);
     border-radius: 5px;
@@ -56,9 +87,19 @@ body {
     padding: 5%;
 }
 
+.search-btn-main {
+    width: 20%;
+}
+
+.alert {
+    margin-top: 2%;
+    font-family: 'Open Sans', sans-serif;
+    color: var(--text-color-dark);
+}
 
 /* css for the search results html*/
 .showing-results-text {
+    position: fixed;
     color: var(--text-color-light);
     margin-top: 3%;
     margin-left: 2%;
@@ -66,6 +107,8 @@ body {
 }
 
 .search-results-container {
+    position:fixed;
+    top: 16%;
     overflow-y: auto;
     max-height: 600px;
     color: var(--text-color-dark);
@@ -104,8 +147,14 @@ body {
 }
 
 /* css for the brewery about html*/
+.brewery-container {
+    position:fixed;
+    top: 12%;
+}
+
 .brewery-name {
-    color: var(--text-color-light)
+    color: var(--text-color-light);
+    margin-top: 2%;
 }
 
 .brewery-logo {
@@ -134,6 +183,7 @@ body {
 
 /* css for the directions html*/
 #sidebar {
+    position: fixed;
     background-color: var(--background-color-light-transparent);
     padding-left: 20px;
     padding-right: 10px;
@@ -150,7 +200,35 @@ body {
 }
 
 .map-text {
+    position: fixed;
+    left: 30%;
     color: var(--text-color-light);
+    background-color: var(--background-color-light-transparent);
 }
 
+#map {
+    width: 65%;
+    height: 80%;
+    position: fixed;
+    left: 30%;
+    top: 15%;
+    color: var(--text-color-light);
+    background-color: var(--background-color-light-transparent);
+}
 
+/* media responsive - tablet and smaller computer screens */
+@media screen and (max-width: 1240px) {
+    #map {
+        left: 34%;
+    }
+}
+
+/* media responsive - phone */
+@media screen and (max-width: 735px) {
+    .search-results-container {
+        top: 20%;
+    }
+    #map {
+        display: none;
+    }
+}

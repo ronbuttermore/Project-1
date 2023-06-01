@@ -7,6 +7,7 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Raleway:wght@200;300;400&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="./assets/css/style.css">
     </head>
     <body>
@@ -16,6 +17,10 @@
             <a class="navbar-brand">Brewery Finder</a>
           </div>
         </nav>
+
+        <video autoplay muted loop id="main-page-video-web">
+          <source src="./assets/Videos/pexels-distill-852342-WEB.mp4" type="video/mp4">
+        </video>
 
         <!-- input and text section -->
         <div class="row text-center main-container">
@@ -29,9 +34,14 @@
             </div>
             <!-- search button -->
             <div id="button-container">
-              <button type="search" value="search" class="btn search-btn" id="search-btn">
+              <button type="search" value="search" class="btn search-btn search-btn-main" id="main-search-btn">
                 Search
               </button>
+            </div>
+            <!-- dismissable alert (has page reset - needs js to listen for the cosed.bs.alert and programmatically set focus() to the main section) -->
+            <div class="alert alert-warning alert-dismissible fade show hide" role="alert" id="error-alert">
+              <strong>Whoops!</strong> Please enter a postal code or city name.
+              <button type="button" class="btn-close" id="error-alert-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
           </form>
         </div>
