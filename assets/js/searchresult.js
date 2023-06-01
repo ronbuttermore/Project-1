@@ -75,21 +75,37 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedZipCodes = localStorage.getItem('savedZipCodes');
     return savedZipCodes ? JSON.parse(savedZipCodes) : [];
   }
+      
 
-    // Function to display the search history
+    // Function to display the search history as a dropdown
     function displaySavedZipCodes() {
-        const savedZipCodesContainer = document.getElementById('savedCities');
-        savedZipCodesContainer.innerHTML = '';
+      const savedZipCodesContainer = document.getElementById('savedCities');
+      savedZipCodesContainer.innerHTML = '';
 
-        const savedZipCodes = getSavedZipCodes();
+      const savedZipCodes = getSavedZipCodes();
 
-        savedZipCodes.forEach((zipCode) => {
-        const zipCodeItem = document.createElement('div');
-        zipCodeItem.className = 'saved-zipcode';
+      savedZipCodes.forEach((zipCode) => {
+        const zipCodeItem = document.createElement('li');
+        zipCodeItem.className = 'dropdown-item';
         zipCodeItem.textContent = zipCode;
         savedZipCodesContainer.appendChild(zipCodeItem);
+
+        zipCodeItem.addEventListener('click', () => {
+          const searchInput = document.querySelector('input[type="search"]');
+          searchInput.value = zipCode;
+          fetchBreweriesByPostalCode(zipCode);
         });
+      });
     }
+
+    // Add event listener to the search bar to display search history
+  const searchInput = document.querySelector('input[type="search"]');
+  searchInput.addEventListener('click', () => {
+    const savedCitiesContainer = document.getElementById('savedCities');
+    savedCitiesContainer.style.display = 'block';
+    displaySavedZipCodes(); // Display the search history
+  });
+
 
     // Form submit event handler
     const form = document.querySelector('form');
@@ -100,16 +116,13 @@ document.addEventListener('DOMContentLoaded', () => {
       if (postalCode !== '') {
         fetchBreweriesByPostalCode(postalCode);
       }
-    });
-
 
     // Display the search history on page load
     displaySavedZipCodes();
 
-    // Add event listener to the search bar to display search history
-    const searchInput = document.querySelector('input[type="search"]');
-    searchInput.addEventListener('click', () => {
-    const savedZipCodesContainer = document.getElementById('savedZipCodes');
-    savedZipCodesContainer.style.display = 'block';
     });
   });
+
+
+    
+  
