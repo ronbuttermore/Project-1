@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Function to fetch breweries by postal code or city
-  function fetchBreweriesByPostalCodeOrCity(zipCodeOrCity) {
+  // Function to fetch breweries by postal code
+  function fetchBreweriesByPostalCode(zipCodeOrCity) {
     let apiEndpoint;
     if (isNaN(zipCodeOrCity)) {
       apiEndpoint = `https://api.openbrewerydb.org/breweries?by_city=${encodeURIComponent(zipCodeOrCity)}`;
@@ -13,8 +13,12 @@ document.addEventListener('DOMContentLoaded', () => {
       .then((data) => {
         // Process the brewery data here
         displaySearchResults(data);
-        saveLocationToLocalStorage(zipCodeOrCity); // Save the zip code or city to local storage
+        saveLocationToLocalStorage(zipCodeOrCity); // Save the location to local storage
         displaySavedLocations(); // Display the search history
+
+        // Set the searched area
+        const searchedArea = document.getElementById('searchedArea');
+        searchedArea.textContent = zipCodeOrCity;
       })
       .catch((error) => {
         console.log('Error:', error);
@@ -52,7 +56,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // Function to display the search results
   function displaySearchResults(results) {
     const searchResultsContainer = document.getElementById('searchResults');
+    const searchResultsCount = document.getElementById('searchResultsCount');
+
     searchResultsContainer.innerHTML = '';
+    searchResultsCount.textContent = results.length;
 
     results.forEach((result) => {
       const resultItem = generateSearchResult(result);
@@ -60,11 +67,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Function to save the zip code or city to local storage
+  // Function to save the zip code to local storage
   function saveLocationToLocalStorage(zipCodeOrCity) {
+    // Get the saved zip codes/cities from local storage
     let savedLocations = localStorage.getItem('savedLocations');
     savedLocations = savedLocations ? JSON.parse(savedLocations) : [];
 
+    // Check if the zip code is already saved
     if (!savedLocations.includes(zipCodeOrCity)) {
       savedLocations.push(zipCodeOrCity);
       savedLocations = savedLocations.slice(-3);
@@ -72,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Function to retrieve the saved zip codes and cities from local storage
+  // Function to retrieve the saved zip codes from local storage
   function getSavedLocations() {
     const savedLocations = localStorage.getItem('savedLocations');
     return savedLocations ? JSON.parse(savedLocations) : [];
@@ -94,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
       locationItem.addEventListener('click', () => {
         const searchInput = document.querySelector('input[type="search"]');
         searchInput.value = location;
-        fetchBreweriesByPostalCodeOrCity(location);
+        fetchBreweriesByPostalCode(location);
       });
     });
   }
@@ -111,13 +120,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const form = document.querySelector('form');
   form.addEventListener('submit', (event) => {
     event.preventDefault();
-    const locationInput = document.querySelector('input[type="search"]');
-    const location = locationInput.value.trim();
-    if (location !== '') {
-      fetchBreweriesByPostalCodeOrCity(location);
+    const postalCodeInput = document.querySelector('input[type="search"]');
+    const postalCode = postalCodeInput.value.trim();
+    if (postalCode !== '') {
+      fetchBreweriesByPostalCode(postalCode);
     }
-
-    // Display the search history on page load
-    displaySavedLocations();
   });
+
+  // Display the search history and searched area on page load
+  displaySavedLocations();
 });
