@@ -1,7 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Function to fetch breweries by postal code
-    function fetchBreweriesByPostalCode(postalCode) {
-      const apiEndpoint = `https://api.openbrewerydb.org/breweries?by_postal=${postalCode}`;
+    function fetchBreweriesByPostalCode(zipCodeOrCity) {
+      let apiEndpoint;
+      if (isNaN(zipCodeOrCity)) {
+        apiEndpoint = `https://api.openbrewerydb.org/breweries?by_city=${encodeURIComponent(zipCodeOrCity)}`;
+      } else {
+        apiEndpoint = `https://api.openbrewerydb.org/breweries?by_postal=${zipCodeOrCity}`;
+      }
+
   
       fetch(apiEndpoint)
         .then((response) => response.json())
@@ -57,23 +63,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   
     // Function to save the zip code to local storage
-    function saveZipCodeToLocalStorage(zipCode) {
-        // Get the saved zip codes from local storage
-        let savedZipCodes = localStorage.getItem('savedZipCodes');
-        savedZipCodes = savedZipCodes ? JSON.parse(savedZipCodes) : [];
+    function saveLocationToLocalStorage(zipCodeOrCity) {
+        // Get the saved zip codes/cities from local storage
+        let savedLocations = localStorage.getItem('savedLocations');
+        savedLocations = savedLocations ? JSON.parse(savedLocations) : [];
 
         // Check if the zip code is already saved
-        if (!savedZipCodes.includes(zipCode)) {
-        savedZipCodes.push(zipCode);
-        savedZipCodes = savedZipCodes.slice(-3);
-        localStorage.setItem('savedZipCodes', JSON.stringify(savedZipCodes));
+        if (!savedLocations.includes(zipCodeOrCity)) {
+        savedLocations.push(zipCodeOrCity);
+        savedLocations = savedLocations.slice(-3);
+        localStorage.setItem('savedLocations', JSON.stringify(savedLocations));
         }
     }
 
     // Function to retrieve the saved zip codes from local storage
-    function getSavedZipCodes() {
-    const savedZipCodes = localStorage.getItem('savedZipCodes');
-    return savedZipCodes ? JSON.parse(savedZipCodes) : [];
+    function getSavedLocations() {
+    const savedLocations = localStorage.getItem('savedLocations');
+    return savedLocations ? JSON.parse(savedLocations) : [];
   }
       
 
