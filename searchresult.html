@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Raleway:wght@200;300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/searchresult.css"> <!-- Add the searchresult.css file -->
     <style>
       /* Add scrollbar to search results container */
       .search-results-container {
@@ -27,7 +28,7 @@
           <span class="input-group-text">Search another area</span>
           <div class="dropdown">
             <input class="form-control dropdown-toggle" type="search" placeholder="Postal Code, City" aria-label="Postal Code, City" data-bs-toggle="dropdown">
-            <ul class="dropdown-menu dropdown-menu-end" id="savedCities"></ul>
+            <ul class="dropdown-menu dropdown-menu-end" id="savedLocations"></ul>
           </div>
           <button class="btn search-btn nav-search-btn" type="submit">Search</button>
         </form>
@@ -36,7 +37,7 @@
     <!-- background photo -->
     <img class="background-image" src="./assets/Photos/background-WEB.png" alt="">
     <!-- showing results for ... -->
-    <h4 class="showing-results-text">Showing results for <span id="searchedArea">...</span></h4>
+    <h4 class="showing-results-text">Showing results for <span id="searchedArea">...</span> (<span id="searchResultsCount"></span>)</h4>
     <!-- search result container -->
     <div class="row search-results-container" id="searchResults"> 
     </div>
