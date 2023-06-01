@@ -127,6 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+
   // Display the search history and searched area on page load
   displaySavedLocations();
 });
