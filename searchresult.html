@@ -24,9 +24,10 @@
         <a class="navbar-brand">Brewery Finder</a>
         <form class="d-flex" role="search">
           <span class="input-group-text">Search another area</span>
-          <input class="form-control" type="search" placeholder="Postal Code, City" aria-label="Postal Code, City">
-          <!-- Empty div for displaying saved cities -->
-          <div id="savedCities"></div>
+          <div class="dropdown">
+            <input class="form-control dropdown-toggle" type="search" placeholder="Postal Code, City" aria-label="Postal Code, City" data-bs-toggle="dropdown">
+            <ul class="dropdown-menu dropdown-menu-end" id="savedCities"></ul>
+          </div>
           <button class="btn search-btn nav-search-btn" type="submit">Search</button>
         </form>
       </div>
