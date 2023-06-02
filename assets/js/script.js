@@ -31,23 +31,25 @@ let postalCode;
 $("#main-search-btn").click(function(event){
     event.preventDefault();
     // remove error alert if it wasn't dismissed
-    $("#error-alert").addClass("hide");
+    // $("#whoops-alert").addClass("hide");
+    // $("#sorry-alert").addClass("hide");
     // grab input information
     // double check if it is a postal code or a city
     if (city || postalCode) {
         // use stored information in the variable locationInput
         window.location.assign("searchresult.html");
-    } else if () { //if there are no results
-        $("#sorry-alert").removeClass("hide");
+    // } else if () { //if there are no results
+    //     $("#sorry-alert").removeClass("hide");
     } else {
         $("#whoops-alert").removeClass("hide");
     }
 });
 
-$("#error-alert-close").click(function(event){
+$(".btn-close").click(function(event){
     event.preventDefault();
     // error alert close
-    $("#error-alert").addClass("hide");
+    $("#whoops-alert").addClass("hide");
+    $("#sorry-alert").addClass("hide");
     $("#city-zip-input").val('');
 });
 
