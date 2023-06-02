@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Function to fetch breweries by postal code
+  // Function to fetch breweries by postal code or city 
   function fetchBreweriesByPostalCode(zipCodeOrCity) {
     let apiEndpoint;
     if (isNaN(zipCodeOrCity)) {
@@ -45,6 +45,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const directionButton = resultItem.querySelector('.direction-btn');
     directionButton.addEventListener('click', () => redirectToDirectionsPage());
 
+
+    const aboutButton = resultItem.querySelector('.about-btn');
+    aboutButton.addEventListener('click', () => redirectToBreweryPage(result));
+
     return resultItem;
   }
 
@@ -52,6 +56,14 @@ document.addEventListener('DOMContentLoaded', () => {
   function redirectToDirectionsPage() {
     window.location.href = 'directions.html';
   }
+
+
+  // Function to redirect to the brewery about page 
+  function redirectToBreweryPage(result) {
+    sessionStorage.setItem('breweryData', JSON.stringify(result));
+    window.location.href = 'brewery.html';
+  }
+  
 
   // Function to display the search results
   function displaySearchResults(results) {
