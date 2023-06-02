@@ -1,7 +1,7 @@
 :root {
     /*colors*/
     /* --background-color: rgb(67, 16, 1); */
-    --background-color: rgb(63, 44, 39);
+    --background-color: rgb(5, 64, 150);
     --background-color-light: rgb(255, 255, 255);
     --background-color-light-transparent: rgba(255, 255, 255, .75);
 
@@ -12,13 +12,17 @@
     --gradient-hover: radial-gradient(rgb(181, 116, 0), rgb(151, 65, 0));
 }
 
+::selection {
+    color: var(--text-color-light);
+    background: var(--background-color);
+  }
+
 body {
     background-color: var(--background-color);
     font-family: 'Open Sans', sans-serif;
-    font-weight: 400;
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4, h5 {
     font-family: 'Raleway', sans-serif;
 }
 
@@ -117,8 +121,8 @@ h4 {
     max-height: 600px;
     color: var(--text-color-dark);
     width: 95%;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
     padding: 20px;
     background-color: var(--background-color-light-transparent);
     border-radius: 5px;
@@ -130,13 +134,14 @@ h4 {
     border-radius: 5px;
     margin: 5px;
     padding: 10px;
-    padding-bottom: 30px;
+    padding-bottom: 45px;
+    background-color: var(--background-color-light-transparent);
 }
 
-.brewery-logo-search {
+/* .brewery-logo-search {
     float: left;
     width: 80px;
-}
+} */
 
 .direction-btn {
     position: absolute;

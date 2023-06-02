@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="brewery-address">Address: ${result.address_1}, ${result.city}, ${result.state}, ${result.postal_code}, ${result.country}</div>
       <div class="brewery-type">Type: ${result.brewery_type}</div>
       <br>
-      <h6 class="contact-header">Contact</h6>
+      <h5 class="contact-header">Contact</h5>
       <div class="brewery-contact">
         <div class="phone-number">Phone: ${result.phone}</div>
         <div class="website">Website: <a href="${result.website_url}" target="_blank">${result.website_url}</a></div>
