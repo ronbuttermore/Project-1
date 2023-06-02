@@ -67,23 +67,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Function to save the zip code to local storage
+  // Function to save the location to local storage
   function saveLocationToLocalStorage(zipCodeOrCity) {
     // Get the saved zip codes/cities from local storage
-    let savedLocations = localStorage.getItem('savedLocations');
+    let savedLocations = localStorage.getItem('brewerySearchLocations');
     savedLocations = savedLocations ? JSON.parse(savedLocations) : [];
 
-    // Check if the zip code is already saved
+    // Check if the location is already saved
     if (!savedLocations.includes(zipCodeOrCity)) {
       savedLocations.push(zipCodeOrCity);
       savedLocations = savedLocations.slice(-3);
-      localStorage.setItem('savedLocations', JSON.stringify(savedLocations));
+      localStorage.setItem('brewerySearchLocations', JSON.stringify(savedLocations));
     }
   }
 
-  // Function to retrieve the saved zip codes from local storage
+  // Function to retrieve the saved locations from local storage
   function getSavedLocations() {
-    const savedLocations = localStorage.getItem('savedLocations');
+    const savedLocations = localStorage.getItem('brewerySearchLocations');
     return savedLocations ? JSON.parse(savedLocations) : [];
   }
 
@@ -116,6 +116,20 @@ document.addEventListener('DOMContentLoaded', () => {
     displaySavedLocations(); // Display the search history
   });
 
+  // Retrieve the searched location from local storage
+const searchedLocation = sessionStorage.getItem('brewerySearchInput');
+
+
+  // Check if a location was searched in index.html
+  if (searchedLocation) {
+    // Fetch breweries based on the searched location
+    fetchBreweriesByPostalCode(searchedLocation);
+
+    // Clear the searched location from local storage
+    sessionStorage.removeItem('brewerySearchInput');
+
+  }
+
   // Form submit event handler
   const form = document.querySelector('form');
   form.addEventListener('submit', (event) => {
@@ -126,7 +140,6 @@ document.addEventListener('DOMContentLoaded', () => {
       fetchBreweriesByPostalCode(postalCode);
     }
   });
-
 
   // Display the search history and searched area on page load
   displaySavedLocations();
