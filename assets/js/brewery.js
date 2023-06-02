@@ -10,21 +10,11 @@ document.addEventListener('DOMContentLoaded', () => {
   function displayBreweryData(result) {
     const breweryNameElement = document.getElementById('brewery-name');
     const breweryLogoElement = document.getElementById('brewery-logo');
-    const aboutSectionOneTitleElement = document.getElementById('about-section-one-title');
-    const aboutSectionOneInfoElement = document.getElementById('about-section-one-info');
-    const aboutSectionTwoTitleElement = document.getElementById('about-section-two-title');
-    const aboutSectionTwoInfoElement = document.getElementById('about-section-two-info');
-    const aboutSectionThreeTitleElement = document.getElementById('about-section-three-title');
-    const aboutSectionThreeInfoElement = document.getElementById('about-section-three-info');
+    const websitePreviewElement = document.getElementById('website-preview');
   
     breweryNameElement.textContent = result.name;
     breweryLogoElement.src = result.image_url;
-    aboutSectionOneTitleElement.textContent = result.section_one_title;
-    aboutSectionOneInfoElement.textContent = result.section_one_info;
-    aboutSectionTwoTitleElement.textContent = result.section_two_title;
-    aboutSectionTwoInfoElement.textContent = result.section_two_info;
-    aboutSectionThreeTitleElement.textContent = result.section_three_title;
-    aboutSectionThreeInfoElement.textContent = result.section_three_info;
+    websitePreviewElement.innerHTML = `<iframe src="${result.website_url}" class="website-iframe"></iframe>`;
   }
   
 // coding for brewery about page
