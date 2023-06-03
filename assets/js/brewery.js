@@ -21,10 +21,14 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Function to redirect back to the search result page
-  function redirectToSearchResultPage() {
+function redirectToSearchResultPage() {
+    const searchInputValue = sessionStorage.getItem('brewerySearchInput');
+    if (searchInputValue) {
+      sessionStorage.setItem('brewerySearchInput', searchInputValue);
+    }
     window.location.href = 'searchresult.html';
   }
-
+  
   
 // coding for brewery about page
 $("#about-directions-btn").click(function(event){
