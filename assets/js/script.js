@@ -1,4 +1,4 @@
-// main page variables
+// // main page variables
 const mainContainer = $('.main-container');
 const mainCityZipInput = $('#city-zip-input');
 const mainSearchBtn = $('#main-search-btn');
@@ -7,7 +7,7 @@ let locationInput;
 let city;
 let postalCode;
 
-// search results page variables
+// // search results page variables
 const searchedArea = $('#searchedArea');
 const searchResultsContainer = $('#searchResults');
 
@@ -52,7 +52,8 @@ $(document).ready(function() {
   $("#search-result-btn").click(function(event) {
     event.preventDefault();
     // remove error alert if it wasn't dismissed
-    $("#error-alert").addClass("hide");
+    $("#whoops-alert").addClass("hide");
+    $("#sorry-alert").addClass("hide");
     // grab input information
     // double check if it is a postal code or a city
     if (city || postalCode) {
@@ -60,14 +61,25 @@ $(document).ready(function() {
       sessionStorage.setItem('searchInput', mainCityZipInput.val());
       window.location.assign("searchresult.html");
     } else {
-      $("#error-alert").removeClass("hide");
+        $("#whoops-alert").removeClass("hide");
     }
-  });
+});
 
-  $("#error-alert-close").click(function(event) {
+$(".btn-close").click(function(event){
     event.preventDefault();
     // error alert close
-    $("#error-alert").addClass("hide");
+    $("#whoops-alert").addClass("hide");
+    $("#sorry-alert").addClass("hide");
     $("#city-zip-input").val('');
   });
 });
+
+// coding for directions page
+
+const map = tt.map({
+    key: "9GgFvkDZz2WjiY63GGreVAvcuKo7Ztvl",
+    container: "map",
+    center: [-104.990250,39.739235],
+    zoom: 10
+})
+

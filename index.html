@@ -39,9 +39,13 @@
               </button>
             </div>
             <!-- dismissable alert (has page reset - needs js to listen for the cosed.bs.alert and programmatically set focus() to the main section) -->
-            <div class="alert alert-warning alert-dismissible fade show hide" role="alert" id="error-alert">
+            <div class="alert alert-warning alert-dismissible fade show hide" role="alert" id="whoops-alert">
               <strong>Whoops!</strong> Please enter a postal code or city name.
-              <button type="button" class="btn-close" id="error-alert-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              <button type="button" class="btn-close" id="whoops-alert-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <div class="alert alert-warning alert-dismissible fade show hide" role="alert" id="sorry-alert">
+              <strong>Sorry!</strong> There were no results for that area. Please enter another!
+              <button type="button" class="btn-close" id="sorry-alert-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
           </form>
         </div>
