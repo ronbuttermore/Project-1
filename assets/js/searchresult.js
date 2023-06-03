@@ -40,7 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
       <h6 class="contact-header">Contact</h6>
       <div class="brewery-contact">
         <div class="phone-number">Phone: ${result.phone}</div>
-        <div class="website">Website: <a href="${result.website_url}" target="_blank">${result.website_url}</a></div>
       </div>
       <button class="btn about-btn" type="about">About Brewery</button>
       <button class="btn direction-btn" type="get-directions">Get Directions</button>`;

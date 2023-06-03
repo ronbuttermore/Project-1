@@ -75,11 +75,3 @@ $(".btn-close").click(function(event){
 });
 
 // coding for directions page
-
-const map = tt.map({
-    key: "9GgFvkDZz2WjiY63GGreVAvcuKo7Ztvl",
-    container: "map",
-    center: [-104.990250,39.739235],
-    zoom: 10
-})
-
