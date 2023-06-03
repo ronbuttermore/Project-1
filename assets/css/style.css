@@ -138,11 +138,6 @@ h4 {
     background-color: var(--background-color-light-transparent);
 }
 
-/* .brewery-logo-search {
-    float: left;
-    width: 80px;
-} */
-
 .direction-btn {
     position: absolute;
     bottom: 5px;
@@ -166,12 +161,13 @@ h4 {
     margin-top: 2%;
 }
 
-.brewery-logo {
+/* .brewery-size-icon {
     background-color: var(--background-color-light-transparent);
     border-radius: 5px;
-}
+    padding: 5px;
+} */
 
-.brewery-logo, .about-direction-btn {
+.brewery-size-icon, .about-direction-btn {
     width: 20%;
     margin-left: 40%;
     margin-right: 40%;
