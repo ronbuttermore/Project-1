@@ -4,6 +4,9 @@ $(".navbar-brand").click(function(event){
 });
 
 document.addEventListener('DOMContentLoaded', () => {
+
+  let isSearchBarFocused = false; // Variable to track search bar focus
+
   // Function to fetch breweries by postal code or city 
   function fetchBreweriesByPostalCode(zipCodeOrCity) {
     let apiEndpoint;
@@ -42,7 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
       <h5 class="contact-header">Contact</h5>
       <div class="brewery-contact">
         <div class="phone-number">Phone: ${result.phone}</div>
-        <div class="website">Website: <a href="${result.website_url}" target="_blank">${result.website_url}</a></div>
       </div>
       <button class="btn about-btn" type="about">About Brewery</button>
       <button class="btn direction-btn" type="get-directions">Get Directions</button>`;
@@ -64,10 +66,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // Function to redirect to the brewery about page 
-  function redirectToBreweryPage(result) {
-    sessionStorage.setItem('breweryData', JSON.stringify(result));
-    window.location.href = 'brewery.html';
-  }
+function redirectToBreweryPage(result) {
+  sessionStorage.setItem('breweryData', JSON.stringify(result));
+  sessionStorage.setItem('brewerySearchInput', document.querySelector('input[type="search"]').value); // Save the searched location
+  window.location.href = 'brewery.html';
+}
+
   
 
   // Function to display the search results
@@ -107,6 +111,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // Function to display the search history as a dropdown
   function displaySavedLocations() {
     const savedLocationsContainer = document.getElementById('savedLocations');
+
+    if (isSearchBarFocused) {
+      savedLocationsContainer.style.display = 'block';
+    } else {
+      savedLocationsContainer.style.display = 'none';
+    }
+
     savedLocationsContainer.innerHTML = '';
 
     const savedLocations = getSavedLocations();
@@ -131,7 +142,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedLocationsContainer = document.getElementById('savedLocations');
     savedLocationsContainer.style.display = 'block';
     displaySavedLocations(); // Display the search history
+    isSearchBarFocused = true; // Set search bar focus to true
   });
+
+
+  searchInput.addEventListener('focus', () => {
+    isSearchBarFocused = true; // Set search bar focus to true
+  });
+
+  searchInput.addEventListener('blur', () => {
+    isSearchBarFocused = false; // Set search bar focus to false
+  });
+
 
   // Retrieve the searched location from local storage
 const searchedLocation = sessionStorage.getItem('brewerySearchInput');
