@@ -75,6 +75,7 @@ var nameNoSpaces = breweryStreet.replace(/ /g, '+');
 navBreweryName.text(breweryName);
 navBreweryAddress.text(breweryAddress[0] + ", " + breweryAddress[1] + ", " + breweryAddress[2] + ", " + breweryAddress[3]);
 
+//listener for entry of user address
 navUserLocation.keypress(function (e) {
     var key = e.which;
     if (key==13){
@@ -82,6 +83,7 @@ navUserLocation.keypress(function (e) {
     }
 });
 
+//function to get user coordinates and call function to find directions
 function findNavigation(){
     var userLocation = navUserLocation.val();
     var userLocationNoSpaces = userLocation.replace(/ /g, '+');
@@ -105,26 +107,29 @@ function findNavigation(){
         })
 }
 
+//function to get and print driving directions from user location to brewery
 function getDirections(breweryLon, breweryLat, userLon,userLat) {
     var directionsAPICall = "https://api.tomtom.com/routing/1/calculateRoute/" + userLat + "," + userLon + ":" + breweryLat + "," + breweryLon + "/json?instructionsType=text&language=en-US&vehicleHeading=90&sectionType=traffic&report=effectiveSettings&routeType=eco&traffic=true&avoid=unpavedRoads&travelMode=car&vehicleMaxSpeed=120&vehicleCommercial=false&vehicleEngineType=combustion&key=9GgFvkDZz2WjiY63GGreVAvcuKo7Ztvl";
     (async () => {
         const response = await fetch(directionsAPICall);
         const body = await response.json();
         console.log(body);
-        //create for loop to populate directions
-        //TODO: Create function to convert sec to minutes
-        //TODO: Create function to properly case directions
 
         for (i=0; i< body.routes[0].guidance.instructions.length; i++) {
             var message = body.routes[0].guidance.instructions[i].message;
             var maneuver = body.routes[0].guidance.instructions[i].maneuver;
             var travelTime = body.routes[0].guidance.instructions[i].travelTimeInSeconds;
+
+            var travelTimeMinutes = Math.floor(travelTime/60);
+            var travelTimeSeconds = travelTime%60;
+
             var directionsBox = $('<p>');
             if (i>0) {
-            directionsBox.text("Drive " + travelTime + " seconds, then " + message);
+            var formattedMessage = message.substring(0,1).toLowerCase() + message.substring(1);
+            directionsBox.text("-Drive " + travelTimeMinutes + " minutes and " + travelTimeSeconds + " seconds, then " + formattedMessage);
             $("#directionslist").append(directionsBox);
             } else {
-                directionsBox.text(message);
+                directionsBox.text("-" + message);
                 $("#directionslist").append(directionsBox);  
             }
         }
@@ -133,6 +138,7 @@ function getDirections(breweryLon, breweryLat, userLon,userLat) {
 
 var geocodingURL = "https://geocode.maps.co/search?q=" + nameNoSpaces + "+" + breweryAddress[1] + "+" + breweryAddress[2] + "+" + breweryAddress[3];
 
+//find coordinates of brewery
 fetch(geocodingURL)
     .then(function(response) {
         return response.json();
@@ -143,6 +149,7 @@ fetch(geocodingURL)
         displayMap(breweryLon,breweryLat);
     })
 
+//function to display brewery on display map
 function displayMap(lon,lat) {
     var brewerycoordinates = [lon,lat];
 
