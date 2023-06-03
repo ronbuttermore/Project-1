@@ -20,8 +20,9 @@ let postalCode;
 // // directions page variables 
 // const navSidebar = $('#sidebar');
    const navUserLocation = $('#userlocation');
+   const navBreweryName = $('#breweryname');
    const navBreweryAddress = $('#breweryaddress');
-// const navDirectionsSection = $('#directionssection');
+   const navDirectionsSection = $('#directionssection');
 // const navDirectionsListContainer = $('#directions-list-container');
 // const navMapContainer = $('#maparea');
 
@@ -71,6 +72,7 @@ var breweryName = localStorage.getItem("breweryName");
 var breweryAddress = JSON.parse(localStorage.getItem("breweryAddress"));
 var breweryStreet = breweryAddress[0];
 var nameNoSpaces = breweryStreet.replace(/ /g, '+');
+navBreweryName.text(breweryName);
 navBreweryAddress.text(breweryAddress[0] + ", " + breweryAddress[1] + ", " + breweryAddress[2] + ", " + breweryAddress[3]);
 
 navUserLocation.keypress(function (e) {
@@ -105,11 +107,27 @@ function findNavigation(){
 
 function getDirections(breweryLon, breweryLat, userLon,userLat) {
     var directionsAPICall = "https://api.tomtom.com/routing/1/calculateRoute/" + userLat + "," + userLon + ":" + breweryLat + "," + breweryLon + "/json?instructionsType=text&language=en-US&vehicleHeading=90&sectionType=traffic&report=effectiveSettings&routeType=eco&traffic=true&avoid=unpavedRoads&travelMode=car&vehicleMaxSpeed=120&vehicleCommercial=false&vehicleEngineType=combustion&key=9GgFvkDZz2WjiY63GGreVAvcuKo7Ztvl";
-    console.log(directionsAPICall);
     (async () => {
         const response = await fetch(directionsAPICall);
         const body = await response.json();
         console.log(body);
+        //create for loop to populate directions
+        //TODO: Create function to convert sec to minutes
+        //TODO: Create function to properly case directions
+
+        for (i=0; i< body.routes[0].guidance.instructions.length; i++) {
+            var message = body.routes[0].guidance.instructions[i].message;
+            var maneuver = body.routes[0].guidance.instructions[i].maneuver;
+            var travelTime = body.routes[0].guidance.instructions[i].travelTimeInSeconds;
+            var directionsBox = $('<p>');
+            if (i>0) {
+            directionsBox.text("Drive " + travelTime + " seconds, then " + message);
+            $("#directionslist").append(directionsBox);
+            } else {
+                directionsBox.text(message);
+                $("#directionslist").append(directionsBox);  
+            }
+        }
     })()
 }
 
