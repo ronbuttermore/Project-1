@@ -24,19 +24,19 @@ If your README is long, add a table of contents to make it easy for users to fin
 ## Brewery Finder
 
 ### Main Load Page
-![Main Page Screenshot](assets/images/ "Main Page Screenshot")
+![Main Page Screenshot](assets/Photos/screenshot-main-page.png "Main Page Screenshot")
 The main page is a simple invitation to learn more about the breweries in your local area.
 
 ### Search Result Page
-![Search Result Page Screenshot](assets/images/ "Search Result Page Screenshot")
+![Search Result Page Screenshot](assets/Photos/screenshot-search-results.png "Search Result Page Screenshot")
 The search result page displays all of the results in the area searched for. There is also an option to look for another area at the top of the page.
 
 ### Brewery Information Page
-![Brewery Information Page Screenshot](assets/images/ "Brewery Information Page Screenshot")
-The brewery information page displays more information about the brewery that is selected in the search results page. 
+![Brewery Information Page Screenshot](assets/Photos/screenshot-about-brewery.png "Brewery Information Page Screenshot")
+The brewery information page displays the website of the brewery. Here, the user can gain more knowlage about the brewery to better know if they would like to get directions there.
 
 ### Directions Page
-![Directions Page Screenshot](assets/images/ "Directions Page Screenshot")
+![Directions Page Screenshot](assets "Directions Page Screenshot")
 The directions page helps navigate from the user’s location to the desired brewery.
 
 ---
@@ -44,19 +44,23 @@ The directions page helps navigate from the user’s location to the desired bre
 ## Usage
 
 ### Main Load Page Usage
-![Main Page Usage Screenshot](assets/images/ "Main Page Usage Screenshot")
-The usage of the main page is equally simple to the design. Input the postal code or city of the searchable location. If the location inputted doesn’t match any in the Open Brewery DB, a dismissable alert will pop up requesting a new input.
+![Main Page Gif Screenshot](assets/Photos/screenshot-gif-main-page.gif "Main Page Gif Screenshot")
+
+The usage of the main page is equally simple to the design. Simply input the postal code or city of the searchable location and click on the search button. If the location inputted is not a city or zip code, a dismissable alert will pop up requesting a new input.
 
 ### Search Result Page Usage
-![Search Result Page Usage Screenshot](assets/images/ "Search Result Page Usage Screenshot")
-To use the search results page, simply scroll through the options provided. There are two buttons for each search result that allow the user to either learn more about the brewery or to get directions to that brewery.
+![Search Result Page Gif Screenshot](assets/Photos/screenshot-gif-search-results.gif "Search Result Page Gif Screenshot")
+
+To use the search results page, simply scroll through the options provided. There are two buttons for each search result that allow the user to either learn more about the brewery or to get directions to that brewery. In addtion, the Brewery Finder in the top left will bring the user back to the main page index.
 
 ### Brewery Information Page Usage
-![Brewery Information Page Usage Screenshot](assets/images/ "Brewery Information Page Usage Screenshot")
+![Brewery Information Page Gif Screenshot](assets/Photos/screenshot-gif-brewery-about.gif "Brewery Information Page Gif Screenshot")
+
 If the user clicked on the button in the search results page to learn more about the brewery, this page will display that information. From here, the user can click on the get directions button to move into the navigation page.
 
 ### Directions Page Usage
-![Directions Page Usage Screenshot](assets/images/ "Directions Page Usage Screenshot")
+![Directions Page Gif Screenshot](assets "Directions Page Gif Screenshot")
+
 Once the user has selected their brewery and to get directions there, they can put in their starting location to receive navigational directions. 
 
 ---
