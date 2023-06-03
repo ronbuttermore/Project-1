@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html>
     <head>
         <meta charset="utf-8">
@@ -17,9 +16,7 @@
         <div class="container-fluid">
           <a class="navbar-brand">Brewery Finder</a>
           <form class="d-flex" role="search">
-            <span class="input-group-text">Search another area</span>
-            <input class="form-control" type="search" placeholder="Postal Code, City" aria-label="Postal Code, City">
-            <button class="btn search-btn nav-search-btn" type="submit">Search</button>
+            <button class="back-btn btn" class="btn" type="button">Back to Search Results</button>
           </form>
         </div>
       </nav>
@@ -28,7 +25,7 @@
       <!-- brewery info -->
       <div id="brewery-container" class="brewery-container">
         <h1 id="brewery-name" class="text-center brewery-name">Brewery Name</h1>
-        <img class="brewery-logo" id="brewery-logo" src="" alt="brewery logo"/>
+        <img class="brewery-icon" id="brewery-icon" src="" alt="brewery-icon"/>
         <div id="website-preview" class="website-preview"></div> <!-- Added div for website preview -->
         <button id="about-directions-btn" class="btn about-direction-btn" type="get-directions">Get Directions</button> 
       </div>
@@ -36,6 +33,7 @@
       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+      <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.14.0/maps/maps-web.min.js"></script>
       <script src="./assets/js/brewery.js" async defer></script>
     </body>
 </html>

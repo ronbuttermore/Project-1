@@ -5,17 +5,26 @@ document.addEventListener('DOMContentLoaded', () => {
       displayBreweryData(result);
       sessionStorage.removeItem('breweryData');
     }
+
+    const backButton = document.querySelector('.back-btn');
+    backButton.addEventListener('click', redirectToSearchResultPage);
+
   });
+
   
   function displayBreweryData(result) {
     const breweryNameElement = document.getElementById('brewery-name');
-    const breweryLogoElement = document.getElementById('brewery-logo');
     const websitePreviewElement = document.getElementById('website-preview');
   
     breweryNameElement.textContent = result.name;
-    breweryLogoElement.src = result.image_url;
     websitePreviewElement.innerHTML = `<iframe src="${result.website_url}" class="website-iframe"></iframe>`;
   }
+
+  // Function to redirect back to the search result page
+  function redirectToSearchResultPage() {
+    window.location.href = 'searchresult.html';
+  }
+
   
 // coding for brewery about page
 $("#about-directions-btn").click(function(event){
