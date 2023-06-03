@@ -216,7 +216,7 @@ h4 {
     position: fixed;
     left: 25%;
     top: 10%;
-    color: var(--text-color-light);
+    color: black;
     background-color: var(--background-color-light-transparent);
 }
 

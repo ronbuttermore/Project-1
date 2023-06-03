@@ -67,9 +67,44 @@ $("#about-directions-btn").click(function(event){
 
 // coding for directions page
 
-const map = tt.map({
-    key: "9GgFvkDZz2WjiY63GGreVAvcuKo7Ztvl",
-    container: "map",
-    center: [-104.990250,39.739235],
-    zoom: 10
-})
+var breweryName = localStorage.getItem("breweryName");
+var breweryAddress = JSON.parse(localStorage.getItem("breweryAddress"));
+var breweryStreet = breweryAddress[0];
+var nameNoSpaces = breweryStreet.replace(/ /g, '+');
+
+var geocodingURL = "https://geocode.maps.co/search?q=" + nameNoSpaces + "+" + breweryAddress[1] + "+" + breweryAddress[2] + "+" + breweryAddress[3];
+
+fetch(geocodingURL)
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(data){
+        var breweryLon = data[0].lon;
+        var breweryLat = data[0].lat;
+        displayMap(breweryLon,breweryLat);
+    })
+
+function displayMap(lon,lat) {
+    var brewerycoordinates = [lon,lat];
+
+    var map = tt.map({
+        key: "9GgFvkDZz2WjiY63GGreVAvcuKo7Ztvl",
+        container: "map",
+        center: brewerycoordinates,
+        zoom: 15
+    })
+
+    var marker = new tt.Marker().setLngLat(brewerycoordinates).addTo(map);
+
+    var popupOffsets = {
+        top: [0,0],
+        bottom: [0,-70],
+        "bottom-right": [0, -70],
+        "bottom-left": [0, -70],
+        left: [25, -35],
+        right: [-25, -35],
+    }
+
+    var popup = new tt.Popup({ offset: popupOffsets }).setHTML("<b>" + breweryName + "</b>" + "<br/>" + breweryAddress[0] + "<br/>" + breweryAddress[1] + ", " + breweryAddress[2] + " " + breweryAddress[3]);
+    marker.setPopup(popup).togglePopup();
+}
