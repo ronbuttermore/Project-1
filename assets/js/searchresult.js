@@ -1,5 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Function to fetch breweries by postal code
+
+  let isSearchBarFocused = false; // Variable to track search bar focus
+
+  // Function to fetch breweries by postal code or city 
   function fetchBreweriesByPostalCode(zipCodeOrCity) {
     let apiEndpoint;
     if (isNaN(zipCodeOrCity)) {
@@ -37,7 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
       <h6 class="contact-header">Contact</h6>
       <div class="brewery-contact">
         <div class="phone-number">Phone: ${result.phone}</div>
-        <div class="website">Website: <a href="${result.website_url}" target="_blank">${result.website_url}</a></div>
       </div>
       <button class="btn about-btn" type="about">About Brewery</button>
       <button class="btn direction-btn" type="get-directions">Get Directions</button>`;
@@ -50,6 +52,10 @@ document.addEventListener('DOMContentLoaded', () => {
       localStorage.setItem('breweryAddress', JSON.stringify([result.address_1, result.city, result.state, result.postal_code]));
       redirectToDirectionsPage()});
 
+
+    const aboutButton = resultItem.querySelector('.about-btn');
+    aboutButton.addEventListener('click', () => redirectToBreweryPage(result));
+
     return resultItem;
   }
 
@@ -57,6 +63,16 @@ document.addEventListener('DOMContentLoaded', () => {
   function redirectToDirectionsPage() {
     window.location.href = 'directions.html';
   }
+
+
+  // Function to redirect to the brewery about page 
+function redirectToBreweryPage(result) {
+  sessionStorage.setItem('breweryData', JSON.stringify(result));
+  sessionStorage.setItem('brewerySearchInput', document.querySelector('input[type="search"]').value); // Save the searched location
+  window.location.href = 'brewery.html';
+}
+
+  
 
   // Function to display the search results
   function displaySearchResults(results) {
@@ -72,29 +88,36 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Function to save the zip code to local storage
+  // Function to save the location to local storage
   function saveLocationToLocalStorage(zipCodeOrCity) {
     // Get the saved zip codes/cities from local storage
-    let savedLocations = localStorage.getItem('savedLocations');
+    let savedLocations = localStorage.getItem('brewerySearchLocations');
     savedLocations = savedLocations ? JSON.parse(savedLocations) : [];
 
-    // Check if the zip code is already saved
+    // Check if the location is already saved
     if (!savedLocations.includes(zipCodeOrCity)) {
       savedLocations.push(zipCodeOrCity);
       savedLocations = savedLocations.slice(-3);
-      localStorage.setItem('savedLocations', JSON.stringify(savedLocations));
+      localStorage.setItem('brewerySearchLocations', JSON.stringify(savedLocations));
     }
   }
 
-  // Function to retrieve the saved zip codes from local storage
+  // Function to retrieve the saved locations from local storage
   function getSavedLocations() {
-    const savedLocations = localStorage.getItem('savedLocations');
+    const savedLocations = localStorage.getItem('brewerySearchLocations');
     return savedLocations ? JSON.parse(savedLocations) : [];
   }
 
   // Function to display the search history as a dropdown
   function displaySavedLocations() {
     const savedLocationsContainer = document.getElementById('savedLocations');
+
+    if (isSearchBarFocused) {
+      savedLocationsContainer.style.display = 'block';
+    } else {
+      savedLocationsContainer.style.display = 'none';
+    }
+
     savedLocationsContainer.innerHTML = '';
 
     const savedLocations = getSavedLocations();
@@ -119,7 +142,32 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedLocationsContainer = document.getElementById('savedLocations');
     savedLocationsContainer.style.display = 'block';
     displaySavedLocations(); // Display the search history
+    isSearchBarFocused = true; // Set search bar focus to true
   });
+
+
+  searchInput.addEventListener('focus', () => {
+    isSearchBarFocused = true; // Set search bar focus to true
+  });
+
+  searchInput.addEventListener('blur', () => {
+    isSearchBarFocused = false; // Set search bar focus to false
+  });
+
+
+  // Retrieve the searched location from local storage
+const searchedLocation = sessionStorage.getItem('brewerySearchInput');
+
+
+  // Check if a location was searched in index.html
+  if (searchedLocation) {
+    // Fetch breweries based on the searched location
+    fetchBreweriesByPostalCode(searchedLocation);
+
+    // Clear the searched location from local storage
+    sessionStorage.removeItem('brewerySearchInput');
+
+  }
 
   // Form submit event handler
   const form = document.querySelector('form');
@@ -131,7 +179,6 @@ document.addEventListener('DOMContentLoaded', () => {
       fetchBreweriesByPostalCode(postalCode);
     }
   });
-
 
   // Display the search history and searched area on page load
   displaySavedLocations();
