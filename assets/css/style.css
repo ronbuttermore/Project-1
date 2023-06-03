@@ -184,6 +184,21 @@ h4 {
     border-radius: 5px;
 }
 
+.website-preview {
+    max-width: 100%;
+    height: 80vh;
+    overflow-y: scroll;
+    margin: 20px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .website-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  
 
 /* css for the directions html*/
 #sidebar {
