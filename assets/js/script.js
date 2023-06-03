@@ -25,6 +25,11 @@ const navDirectionsSection = $('#directionssection');
 const navDirectionsListContainer = $('#directions-list-container');
 const navMapContainer = $('#maparea');
 
+$(".navbar-brand").click(function(event){
+  event.preventDefault();
+  window.location.assign("index.html"); 
+});
+
 // coding for main page functionality
 $(document).ready(function() {
     $("#main-search-btn").click(function(event) {

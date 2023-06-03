@@ -1,3 +1,8 @@
+$(".navbar-brand").click(function(event){
+  event.preventDefault();
+  window.location.assign("index.html"); 
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   // Function to fetch breweries by postal code or city 
   function fetchBreweriesByPostalCode(zipCodeOrCity) {

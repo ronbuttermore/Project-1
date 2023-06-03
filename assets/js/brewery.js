@@ -1,3 +1,9 @@
+$(".navbar-brand").click(function(event){
+  event.preventDefault();
+  window.location.assign("index.html"); 
+});
+
+
 document.addEventListener('DOMContentLoaded', () => {
     const breweryData = sessionStorage.getItem('breweryData');
     if (breweryData) {
