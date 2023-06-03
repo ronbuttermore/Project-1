@@ -21,22 +21,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Function to redirect back to the search result page
-  function redirectToSearchResultPage() {
+function redirectToSearchResultPage() {
+    const searchInputValue = sessionStorage.getItem('brewerySearchInput');
+    if (searchInputValue) {
+      sessionStorage.setItem('brewerySearchInput', searchInputValue);
+    }
     window.location.href = 'searchresult.html';
   }
-
   
-// coding for brewery about page
-$("#about-directions-btn").click(function(event){
-    event.preventDefault();
-    // pull information from url to put into directions?
-    window.location.assign("directions.html"); 
-  });
-  
-  const map = tt.map({
-    key: "9GgFvkDZz2WjiY63GGreVAvcuKo7Ztvl",
-    container: "map",
-    center: [-104.990250,39.739235],
-    zoom: 10
-  });
   
