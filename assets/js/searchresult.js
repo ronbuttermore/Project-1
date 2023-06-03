@@ -45,7 +45,12 @@ document.addEventListener('DOMContentLoaded', () => {
       <button class="btn direction-btn" type="get-directions">Get Directions</button>`;
 
     const directionButton = resultItem.querySelector('.direction-btn');
-    directionButton.addEventListener('click', () => redirectToDirectionsPage());
+
+    //add info to local storage for maps page
+    directionButton.addEventListener('click', function() {
+      localStorage.setItem('breweryName', result.name);
+      localStorage.setItem('breweryAddress', JSON.stringify([result.address_1, result.city, result.state, result.postal_code]));
+      redirectToDirectionsPage()});
 
 
     const aboutButton = resultItem.querySelector('.about-btn');
