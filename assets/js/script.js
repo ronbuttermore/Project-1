@@ -115,6 +115,20 @@ function getDirections(breweryLon, breweryLat, userLon,userLat) {
         const body = await response.json();
         console.log(body);
 
+        //add travel time
+        //add total distance
+        var totalTravelTime = body.routes[0].legs[0].summary.travelTimeInSeconds;
+        var totalDistance = body.routes[0].legs[0].summary.lengthInMeters;
+        var timeBox = $('<p>');
+        var distanceBox = $('<p>');
+        var totalTimeMinutes = Math.floor(totalTravelTime/60);
+        var totalTimeLeftover= totalTravelTime%60;
+        timeBox.text("Total Travel Time: " + totalTimeMinutes + " minutes and " + totalTimeLeftover + " seconds");
+        $("#directionslist").append(timeBox);
+        var distanceInMiles = (totalDistance*0.0006213712).toFixed(2);
+        distanceBox.text("Total Distance: " + distanceInMiles + " miles");
+        $('#directionslist').append(distanceBox);
+
         for (i=0; i< body.routes[0].guidance.instructions.length; i++) {
             var message = body.routes[0].guidance.instructions[i].message;
             var maneuver = body.routes[0].guidance.instructions[i].maneuver;
