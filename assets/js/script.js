@@ -19,8 +19,8 @@ let postalCode;
 
 // // directions page variables 
 // const navSidebar = $('#sidebar');
-// const navUserLocation = $('#userlocation');
-// const navBreweryAddress = $('#breweryaddress');
+   const navUserLocation = $('#userlocation');
+   const navBreweryAddress = $('#breweryaddress');
 // const navDirectionsSection = $('#directionssection');
 // const navDirectionsListContainer = $('#directions-list-container');
 // const navMapContainer = $('#maparea');
@@ -71,6 +71,47 @@ var breweryName = localStorage.getItem("breweryName");
 var breweryAddress = JSON.parse(localStorage.getItem("breweryAddress"));
 var breweryStreet = breweryAddress[0];
 var nameNoSpaces = breweryStreet.replace(/ /g, '+');
+navBreweryAddress.text(breweryAddress[0] + ", " + breweryAddress[1] + ", " + breweryAddress[2] + ", " + breweryAddress[3]);
+
+navUserLocation.keypress(function (e) {
+    var key = e.which;
+    if (key==13){
+        findNavigation();
+    }
+});
+
+function findNavigation(){
+    var userLocation = navUserLocation.val();
+    var userLocationNoSpaces = userLocation.replace(/ /g, '+');
+    var userGeocode = "https://geocode.maps.co/search?q=" + userLocationNoSpaces;
+    fetch(userGeocode)
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data){
+            var userLon = data[0].lon;
+            var userLat = data[0].lat;
+            fetch(geocodingURL)
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(function(data){
+                    var breweryLon = data[0].lon;
+                    var breweryLat = data[0].lat;
+                    getDirections(breweryLon, breweryLat, userLon,userLat);
+                })
+        })
+}
+
+function getDirections(breweryLon, breweryLat, userLon,userLat) {
+    var directionsAPICall = "https://api.tomtom.com/routing/1/calculateRoute/" + userLat + "," + userLon + ":" + breweryLat + "," + breweryLon + "/json?instructionsType=text&language=en-US&vehicleHeading=90&sectionType=traffic&report=effectiveSettings&routeType=eco&traffic=true&avoid=unpavedRoads&travelMode=car&vehicleMaxSpeed=120&vehicleCommercial=false&vehicleEngineType=combustion&key=9GgFvkDZz2WjiY63GGreVAvcuKo7Ztvl";
+    console.log(directionsAPICall);
+    (async () => {
+        const response = await fetch(directionsAPICall);
+        const body = await response.json();
+        console.log(body);
+    })()
+}
 
 var geocodingURL = "https://geocode.maps.co/search?q=" + nameNoSpaces + "+" + breweryAddress[1] + "+" + breweryAddress[2] + "+" + breweryAddress[3];
 
