@@ -62,12 +62,12 @@ function displayBreweryData(result) {
   }
 }
 
+// Function to redirect back to the search result page
 function redirectToSearchResultPage() {
   const searchInputValue = sessionStorage.getItem('brewerySearchInput');
   if (searchInputValue) {
     sessionStorage.setItem('brewerySearchInput', searchInputValue);
   }
-  sessionStorage.setItem('previousPage', 'brewery.html'); // Save the previous page URL
   window.location.href = 'searchresult.html';
 }
 

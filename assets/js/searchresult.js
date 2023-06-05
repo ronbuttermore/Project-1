@@ -135,15 +135,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Function to redirect to the brewery about page
-  function redirectToBreweryPage(result) {
-    saveToSessionStorage("breweryData", JSON.stringify(result));
-    saveToSessionStorage(
-      "brewerySearchInput",
-      document.querySelector("input[type='search']").value
-    ); // Save the searched location
-    window.location.href = "brewery.html";
-  }
-
+function redirectToBreweryPage(result) {
+  sessionStorage.setItem('breweryData', JSON.stringify(result));
+  sessionStorage.setItem('brewerySearchInput', document.querySelector('input[type="search"]').value); // Save the searched location
+  window.location.href = 'brewery.html';
+ }
+ 
+ 
+ 
   // Function to display the search results
   function displaySearchResults(results) {
     const searchResultsContainer = document.getElementById("searchResults");
