@@ -1,4 +1,4 @@
-// // main page variables
+// main page variables
 const mainContainer = $('.main-container');
 const mainCityZipInput = $('#city-zip-input');
 const mainSearchBtn = $('#main-search-btn');
@@ -28,7 +28,7 @@ let VCities = ["Vail", "Valdez", "Valdosta", "Vallejo", "Valley City", "Valparai
 let WXYZCities = ["Wabash", "Waco", "Wahiawa", "Wahpeton", "Wailuku", "Waimea", "Walla Walla", "Wallingford", "Walnut Creek", "Walpi", "Walsenburg", "Warm Springs", "Warner Robins", "Warren", "Warren", "Warren", "Warren", "Warrensburg", "Warwick", "Washington", "Washington", "Washington", "Washington", "Waterbury", "Waterford", "Waterloo", "Watertown", "Watertown", "Watertown", "Watertown", "Waterville", "Watervliet", "Watkins Glen", "Watts", "Waukegan", "Waukesha", "Wausau", "Wauwatosa", "Waycross", "Wayne", "Waynesboro", "Weatherford", "Webster", "Webster City", "Weehawken", "Weirton", "Welch", "Wellesley", "Wellfleet", "Wellsburg", "Wenatchee", "West Allis", "West Bend", "West Bridgewater", "West Chester", "West Covina", "West Des Moines", "West Hartford", "West Haven", "West Lafayette", "West Memphis", "West New York", "West Orange", "West Palm Beach", "West Plains", "West Point", "West Seneca", "West Springfield", "Westerly", "Westfield", "Westminster", "Westminster", "Weston", "Westport", "Wethersfield", "Wewoka", "Weymouth", "Wheaton", "Wheeling", "White Plains", "White Springs", "White Sulphur Springs", "Whitman", "Whittier", "Wichita", "Wichita Falls", "Wickford", "Wilkes-Barre", "Williamsburg", "Williamson", "Williamsport", "Williamstown", "Willimantic", "Willingboro", "Williston", "Willmar", "Wilmette", "Wilmington", "Wilmington", "Wilson", "Winchester", "Windham", "Window Rock", "Windsor", "Windsor Locks", "Winnemucca", "Winnetka", "Winona", "Winooski", "Winslow", "Winsted", "Winston-Salem", "Winter Haven", "Winter Park", "Wisconsin Dells", "Woburn", "Wood River", "Woodbridge", "Woodland", "Woods Hole", "Woodstock", "Woodward", "Woonsocket", "Wooster", "Worcester", "Worland", "Worthington", "Wyandotte", "Wyoming", "Xenia", "Yakima", "Yankton", "Yazoo City", "Yellow Springs", "Yonkers", "Yorba Linda", "York", "York", "Youngstown", "Ypsilanti", "Ysleta", "Yuba City", "Yuma", "Zanesville", "Zion"];
 
 
-// // directions page variables 
+// directions page variables 
 // const navSidebar = $('#sidebar');
    const navUserLocation = $('#userlocation');
    const navBreweryName = $('#breweryname');
