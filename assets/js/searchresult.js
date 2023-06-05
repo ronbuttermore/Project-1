@@ -130,9 +130,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Function to redirect to the directions page
-  function redirectToDirectionsPage() {
-    window.location.href = "directions.html";
-  }
+  function redirectToDirectionsPage(result) {
+    sessionStorage.setItem('breweryData', JSON.stringify(result));
+    sessionStorage.setItem('brewerySearchInput', document.querySelector('input[type="search"]').value); // Save the searched location
+    window.location.href = 'directions.html';
+   }
 
   // Function to redirect to the brewery about page
 function redirectToBreweryPage(result) {
