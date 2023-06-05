@@ -7,55 +7,74 @@ $(".navbar-brand").click(function(event){
 document.addEventListener('DOMContentLoaded', () => {
     const breweryData = sessionStorage.getItem('breweryData');
     if (breweryData) {
+      try {
       const result = JSON.parse(breweryData);
       displayBreweryData(result);
+    } catch (error) {
+      console.error('Error parsing breweryData:', error);
+    } finally {
       sessionStorage.removeItem('breweryData');
     }
+  }
 
-    const backButton = document.querySelector('.back-btn');
+  const backButton = document.querySelector('.back-btn');
+  if (backButton) {
     backButton.addEventListener('click', redirectToSearchResultPage);
-
-  });
+  }
+});
 
   
-  function displayBreweryData(result) {
+function displayBreweryData(result) {
+  try {
     const breweryNameElement = document.getElementById('brewery-name');
     const websitePreviewElement = document.getElementById('website-preview');
-  
-    breweryNameElement.textContent = result.name;
-    websitePreviewElement.innerHTML = `<iframe src="${result.website_url}" class="website-iframe"></iframe>`;
 
-    if (result.brewery_type == "brewpub") {
-      $("#brewpub-icon").removeClass("hide");
+    if (breweryNameElement && websitePreviewElement) {
+      breweryNameElement.textContent = result.name;
+      websitePreviewElement.innerHTML = `<iframe src="${result.website_url}" class="website-iframe"></iframe>`;
+    } else {
+      throw new Error('Required DOM elements not found.');
     }
-    if (result.brewery_type == "contract") {
-      $("#contract-icon").removeClass("hide");
+
+    const breweryType = result.brewery_type;
+    if (breweryType) {
+      const breweryIcons = {
+        brewpub: '#brewpub-icon',
+        contract: '#contract-icon',
+        large: '#large-icon',
+        micro: '#microwbrew-icon',
+        planning: '#planning-icon',
+        proprietor: '#proprietor-icon',
+        regional: '#regional-icon'
+      };
+      const breweryIconSelector = breweryIcons[breweryType];
+      if (breweryIconSelector) {
+        $(breweryIconSelector).removeClass("hide");
+      } else {
+        throw new Error(`Invalid brewery type: ${breweryType}`);
+      }
+    } else {
+      throw new Error('Brewery type not specified.');
     }
-    if (result.brewery_type == "large") {
-      $("#large-icon").removeClass("hide");
-    }
-    if (result.brewery_type == "micro") {
-      $("#microwbrew-icon").removeClass("hide");
-    }
-    if (result.brewery_type == "planning") {
-      $("#planning-icon").removeClass("hide");
-    }
-    if (result.brewery_type == "proprietor") {
-      $("#proprietor-icon").removeClass("hide");
-    }
-    if (result.brewery_type == "regional") {
-      $("#regional-icon").removeClass("hide");
-    }
+  } catch (error) {
+    console.error('Error displaying brewery data:', error);
+    // Handle the error appropriately, such as showing an error message to the user
   }
+}
 
   // Function to redirect back to the search result page
 function redirectToSearchResultPage() {
-    const searchInputValue = sessionStorage.getItem('brewerySearchInput');
-    if (searchInputValue) {
+  const searchInputValue = sessionStorage.getItem('brewerySearchInput');
+  if (searchInputValue) {
+    try {
       sessionStorage.setItem('brewerySearchInput', searchInputValue);
+      window.location.href = 'searchresult.html';
+    } catch (error) {
+      console.error('Error redirecting to search result page:', error);
+      // Handle the error appropriately, such as showing an error message to the user
     }
-    window.location.href = 'searchresult.html';
   }
+}
   
   
   
