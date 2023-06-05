@@ -133,11 +133,6 @@ function displayMap(lon,lat) {
     marker.setPopup(popup).togglePopup();
 }
 
-const backButton = document.querySelector('.back-btn');
-  if (backButton) {
-    backButton.addEventListener('click', redirectToSearchResultPage);
-  }
-
   // Function to redirect back to the search result page
 function redirectToSearchResultPage() {
     const searchInputValue = sessionStorage.getItem('brewerySearchInput');
@@ -146,3 +141,9 @@ function redirectToSearchResultPage() {
     }
     window.location.href = 'searchresult.html';
   }
+  
+  const backButton = document.querySelector('.back-btn');
+  if (backButton) {
+    backButton.addEventListener('click', redirectToSearchResultPage);
+  }
+  
