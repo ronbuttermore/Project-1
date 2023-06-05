@@ -9,7 +9,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Raleway:wght@200;300;400&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.18.0/maps/maps.css"/>
-        <!-- <link rel="stylesheet" href="./assets/css/directions.css"> -->
 
         <link rel="stylesheet" href="./assets/css/style.css"> 
     </head>
@@ -36,12 +35,14 @@
             </div>
             <div class="my-3">
                 <h3>To:</h3>
+                <h4 id="breweryname">*Brewery Name*</h4>
                 <h4 id="breweryaddress">*Brewery Address*</h4>
             </div>
             <div id="directionssection" class="my-4">
                 <h4>Navigation Directions: </h4>
+                <div id="directionslist"></div>
+                <!--
                 <div id="directions-list-container" class="directions-list-container" tabindex="0">
-                    <!-- direction results will be dynamically added here -->
                     <div id="directionslist" class="directions-list my-4">
                         <img class="input-group-text direction-icon" src="" alt="start icon"/>
                         <p class="direction-information">Starting Address</p>
@@ -67,12 +68,11 @@
                         <p class="direction-information">End Address</p>
                     </div>
                 </div>
+                -->
             </div>
         </div>
         <!-- map -->
         <div class="col-12 col-md-8 col-lg-9">
-            <!-- <h1 class="map-text">Map</h1> -->
-            <!-- <br/> -->
             <div id="map"></div>
         </div>
         </div>
