@@ -71,6 +71,11 @@ function redirectToSearchResultPage() {
   window.location.href = 'searchresult.html';
 }
 
+$("#about-directions-btn").click(function() {
+  sessionStorage.setItem('breweryData', JSON.stringify(result));
+  sessionStorage.setItem('brewerySearchInput', document.querySelector('input[type="search"]').value); // Save the searched location
+  window.location.href = 'directions.html';
+});
 
 
 

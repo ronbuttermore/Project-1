@@ -19,6 +19,11 @@ var nameNoSpaces = breweryStreet.replace(/ /g, '+');
 navBreweryName.text(breweryName);
 navBreweryAddress.text(breweryAddress[0] + ", " + breweryAddress[1] + ", " + breweryAddress[2] + ", " + breweryAddress[3]);
 
+$(".navbar-brand").click(function(event){
+    event.preventDefault();
+    window.location.assign("index.html"); 
+  });
+
 //listener for entry of user address
 navUserLocation.keypress(function (e) {
     var key = e.which;

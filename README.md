@@ -4,7 +4,7 @@
 
 This web application, Brewery Finder, was developed to help anyone find breweries, cideries, brewpubs, and bottleshops in their nearby areas. The motivation behind this project was to create a simple way for a user to locate a brewery and get directions in the same webpage application. Through third party API sources, Open Brewery DP and TomTom, the webpage was able to have the source information needed for functionality. With this web application, a user only has to go to one webpage to find the breweries in their area as well as the directions to that brewery instead of using multiple applications to find their desired destination and how to get there.
 
-[Here is a link to the webpage](https://).
+[Here is a link to the webpage](https://ronbuttermore.github.io/brewery-finder/).
 
 ---
 ---
@@ -36,7 +36,7 @@ The search result page displays all of the results in the area searched for. The
 The brewery information page displays the website of the brewery. Here, the user can gain more knowlage about the brewery to better know if they would like to get directions there.
 
 ### Directions Page
-![Directions Page Screenshot](assets "Directions Page Screenshot")
+![Directions Page Screenshot](assets/Photos/screenshot-directions.png "Directions Page Screenshot")
 The directions page helps navigate from the user’s location to the desired brewery.
 
 ---
@@ -59,7 +59,7 @@ To use the search results page, simply scroll through the options provided. Ther
 If the user clicked on the button in the search results page to learn more about the brewery, this page will display that information. From here, the user can click on the get directions button to move into the navigation page.
 
 ### Directions Page Usage
-![Directions Page Gif Screenshot](assets "Directions Page Gif Screenshot")
+![Directions Page Gif Screenshot](assets/Photos/screenshot-gif-directions.gif "Directions Page Gif Screenshot")
 
 Once the user has selected their brewery and to get directions there, they can put in their starting location to receive navigational directions. 
 
