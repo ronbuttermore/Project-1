@@ -1,6 +1,5 @@
 :root {
     /*colors*/
-    /* --background-color: rgb(67, 16, 1); */
     --background-color: rgb(5, 64, 150);
     --background-color-light: rgb(255, 255, 255);
     --background-color-light-transparent: rgba(255, 255, 255, .75);
@@ -24,12 +23,6 @@ body {
     width: 100vw;
     overflow: auto;
 }
-
-/* .scroll {
-    height: 100vh;
-    width: 100vw;
-    overflow: auto;
-} */
 
 h1, h2, h3, h4, h5 {
     font-family: 'Raleway', sans-serif;
@@ -131,8 +124,6 @@ h4 {
     position: relative;
     height: 600px;
     width: 95vw;
-    /* position:fixed;
-    top: 16%; */
     overflow-y: auto;
     max-height: 600px;
     color: var(--text-color-dark);
@@ -169,7 +160,6 @@ h4 {
 /* css for the brewery about html*/
 .brewery-container {
     position:fixed;
-    /* top: 25px; */
 }
 
 .brewery-name-container {
@@ -185,8 +175,6 @@ h4 {
 
 .website-preview {
     position: relative;
-    /* top: 30%; */
-    /* height: 60%; */
     height: 600px;
     width: 95vw;
     margin-left: 2.5%;
@@ -242,23 +230,6 @@ h4 {
 
 /* media responsive - tablet and smaller computer screens */
 @media screen and (max-width: 994px) {
-    /* .brewery-size-icon {
-        top: 17%;
-        width: 20%;
-        margin-left: 40%;
-        margin-right: 40%;
-    }
-
-    .about-direction-btn {
-        width: 40%;
-        margin-left: 30%;
-        margin-right: 30%;
-    }
-
-    .brewery-name {
-        top: 18%;
-        font-size: 45px;
-    } */
     
     #map {
         left: 34%;
@@ -271,20 +242,9 @@ h4 {
         top: 20%;
     }
 
-    /* .brewery-size-icon {
-        display: none;
+    .btn {
+        font-size: smaller;
     }
-
-    .about-direction-btn {
-        width: 50%;
-        margin-left: 25%;
-        margin-right: 25%;
-    }
-
-    .brewery-name {
-        top: 18%;
-        font-size: 30px;
-    } */
 
     .about-direction-btn {
         width: 50%;
