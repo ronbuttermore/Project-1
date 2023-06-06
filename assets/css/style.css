@@ -271,20 +271,9 @@ h4 {
         top: 20%;
     }
 
-    /* .brewery-size-icon {
-        display: none;
+    .btn {
+        font-size: smaller;
     }
-
-    .about-direction-btn {
-        width: 50%;
-        margin-left: 25%;
-        margin-right: 25%;
-    }
-
-    .brewery-name {
-        top: 18%;
-        font-size: 30px;
-    } */
 
     .about-direction-btn {
         width: 50%;
